@@ -7,12 +7,9 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     apt-get remove docker docker-engine docker.io &&\
     apt-get install --no-install-recommends -y curl=7.58.* \
     ca-certificates=20180409* \
-    gnupg=2.2.4* &&\
-    #gnupg-l10n \
-    #gnupg-utils \
-    #gpg \
-    #gpgconf &&\
-    #apt-get install -y curl gnupg &&\
+    gnupg=2.2.4* \
+    lsb-release \
+    software-properties-common=0.96.24.32* &&\
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - &&\
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" &&\
     apt-get update &&\
@@ -25,8 +22,7 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     git=1:2.17* \
     jq=1.5+dfsg-2* \
     apt-transport-https=1.6.3* \
-    software-properties-common=0.96.24.32* &&\
-    apt-get install -y docker-ce=18.06.1* &&\
+    docker-ce=18.06.1* &&\
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/* &&\
     pip install --upgrade pip==9.0.3 && \
@@ -43,4 +39,3 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     chmod +x helm-v2.11.0-linux-amd64.tar.gz &&\
     tar -zxvf helm-v2.11.0-linux-amd64.tar.gz &&\
     mv linux-amd64/helm /usr/local/bin
-
