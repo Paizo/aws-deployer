@@ -4,6 +4,7 @@ LABEL maintainer="https://github.com/Paizo"
 
 RUN export DEBIAN_FRONTEND=noninteractive &&\
     apt-get update &&\
+    apt-get remove docker docker-engine docker.io &&\
     apt-get install --no-install-recommends -y curl=7.58.* \
     ca-certificates=20180409* \
     gnupg=2.2.4* &&\
@@ -13,6 +14,7 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     #gpgconf &&\
     #apt-get install -y curl gnupg &&\
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - &&\
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" &&\
     apt-get update &&\
     apt-get install -y python=2.7.15* \
     python-pip=9.0.1* \
@@ -24,8 +26,7 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
     jq=1.5+dfsg-2* \
     apt-transport-https=1.6.3* \
     software-properties-common=0.96.24.32* &&\
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" &&\
-    apt-get install --no-install-recommends -y docker-ce=18.06.1* &&\
+    apt-get install -y docker-ce=18.06.1* &&\
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/* &&\
     pip install --upgrade pip==9.0.3 && \
