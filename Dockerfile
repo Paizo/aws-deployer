@@ -5,24 +5,27 @@ LABEL maintainer="https://github.com/Paizo"
 RUN export DEBIAN_FRONTEND=noninteractive &&\
     apt-get update &&\
     apt-get remove docker docker-engine docker.io &&\
-    apt-get install --no-install-recommends -y curl=7.58.* \
-    ca-certificates=20180409* \
-    gnupg=2.2.4* \
+    apt-get install -y curl \
+    ca-certificates \
+    gnupg \
     lsb-release \
-    software-properties-common=0.96.24.32* &&\
+    software-properties-common &&\
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - &&\
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" &&\
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" &&\
+    #add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" | tee /etc/apt/sources.list.d/docker.list &&\
+    apt-cache policy docker-ce &&\
     apt-get update &&\
     apt-get install -y python=2.7.15* \
     python-pip=9.0.1* \
     python-dev=2.7.15* \
-    build-essential=12.4ubuntu1 \
-    groff=1.22.3* \
-    nano=2.9.3-2* \
-    git=1:2.17* \
-    jq=1.5+dfsg-2* \
-    apt-transport-https=1.6.3* \
-    docker-ce=18.06.1* &&\
+    build-essential \
+    groff \
+    nano \
+    git \
+    jq \
+    apt-transport-https \
+    docker-ce \
+    sudo &&\
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/* &&\
     pip install --upgrade pip==9.0.3 && \
