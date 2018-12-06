@@ -15,9 +15,6 @@ Based on Ubuntu 18.04 with the following additional packages:
  - python-pip=9.0.1*
  - python-dev=2.7.15*
  - build-essential
- - groff
- - nano
- - git
  - jq
  - apt-transport-https
  - software-properties-common
