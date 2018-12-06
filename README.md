@@ -1,6 +1,4 @@
-# aws-deployer
-
-[![Docker Automated build](https://img.shields.io/docker/build/paiz0/aws-deployer.svg)](https://hub.docker.com/r/paiz0/aws-deployer/)
+# aws-deployer [![Docker Automated build](https://img.shields.io/docker/build/paiz0/aws-deployer.svg)](https://hub.docker.com/r/paiz0/aws-deployer/)
 
 utility image to process deployments to Amazon AWS EKS via CI/CD pipeline, available at [Docker Hub!](https://hub.docker.com/r/paiz0/aws-deployer/)
 
